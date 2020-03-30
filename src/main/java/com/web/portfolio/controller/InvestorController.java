@@ -43,6 +43,14 @@ public class InvestorController {
     @Transactional
     public Investor get(@PathVariable("id") Long id) {
         Investor investor = service.getInvestorRepository().findOne(id);
+        // 當 FetchType.LAZY 配置時 讓 investor 查找 Portfolios
+        if(investor != null && investor.getPortfolios() != null && investor.getPortfolios().size() > 0) {
+            investor.getPortfolios().size();
+        }
+        // 當 FetchType.LAZY 配置時 讓 investor 查找 Watchs
+        if(investor != null && investor.getWatchs()!= null && investor.getWatchs().size() > 0) {
+            investor.getWatchs().size();
+        }
         return investor;
     }
     
