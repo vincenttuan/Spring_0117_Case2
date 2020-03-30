@@ -22,6 +22,7 @@
                 $("#add").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
+                    alert(jsonStr);
                     $.ajax({
                         url: "/SpringMVC/mvc/portfolio/investor/",
                         type: "POST",
