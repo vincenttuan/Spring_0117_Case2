@@ -39,6 +39,13 @@ public class InvestorController {
         return investor;
     }
     
+    @GetMapping(value = {"/{id}", "/get/{id}"})
+    @Transactional
+    public Investor get(@PathVariable("id") Long id) {
+        Investor investor = service.getInvestorRepository().findOne(id);
+        return investor;
+    }
+    
     @DeleteMapping(value = {"/{id}", "/delete/{id}"})
     @Transactional
     public Boolean delete(@PathVariable("id") Long id) {
