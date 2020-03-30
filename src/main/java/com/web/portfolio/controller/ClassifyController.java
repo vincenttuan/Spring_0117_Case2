@@ -29,7 +29,7 @@ public class ClassifyController {
     @Transactional
     public Classify get(@PathVariable("id") Long id) {
         Classify classify = service.getClassifyRepository().findOne(id);
-        //!!!!!因為是延遲加載，通過執行size()這種方式取得所有子項
+        //當 FetchType.LAZY 配置時，讓 classify 查找 tStocks
         if (classify != null && classify.gettStocks() != null) {
             classify.gettStocks().size();
         }
