@@ -5,9 +5,7 @@ import com.web.portfolio.dao.InvestorRepository;
 import com.web.portfolio.dao.PortfolioRepository;
 import com.web.portfolio.dao.TStockRepository;
 import com.web.portfolio.dao.WatchRepository;
-import com.web.portfolio.entity.Investor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service

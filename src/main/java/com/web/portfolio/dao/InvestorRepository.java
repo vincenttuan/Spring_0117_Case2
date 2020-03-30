@@ -1,9 +1,6 @@
 package com.web.portfolio.dao;
 
-import com.web.portfolio.entity.Classify;
 import com.web.portfolio.entity.Investor;
-import java.io.Serializable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
