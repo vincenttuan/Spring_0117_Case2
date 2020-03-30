@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +53,17 @@ public class InvestorController {
             investor.getWatchs().size();
         }
         return investor;
+    }
+    
+    @PutMapping(value = {"/{id}", "/update/{id}"})
+    @Transactional
+    public Boolean update(@PathVariable("id") Long id, @RequestBody Map<String, String> map) {
+        Investor o_Investor = get(id);
+        if (o_Investor == null) {
+            return false;
+        }
+        service.getInvestorRepository().update(id, map.get("username"), map.get("password"), map.get("email"), Integer.parseInt(map.get("balance")));
+        return true;
     }
     
     @DeleteMapping(value = {"/{id}", "/delete/{id}"})
