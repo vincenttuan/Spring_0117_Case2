@@ -59,6 +59,7 @@ public class InvestorController {
     @Transactional
     public Boolean update(@PathVariable("id") Long id, @RequestBody Map<String, String> map) {
         Investor o_Investor = get(id);
+        System.out.println(o_Investor);
         if (o_Investor == null) {
             return false;
         }
