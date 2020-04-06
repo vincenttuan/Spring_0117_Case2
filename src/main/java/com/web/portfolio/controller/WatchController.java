@@ -23,8 +23,7 @@ public class WatchController {
     @GetMapping(value = {"/{id}", "/get/{id}"})
     @Transactional
     public Watch get(@PathVariable("id") Long id) {
-        // block of code
-        return null;
+        return service.getWatchRepository().findOne(id);
     }
     
     @GetMapping(value = {"/", "/query"})
