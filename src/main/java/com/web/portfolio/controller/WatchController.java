@@ -1,5 +1,6 @@
 package com.web.portfolio.controller;
 
+import com.web.portfolio.entity.TStock;
 import com.web.portfolio.entity.Watch;
 import com.web.portfolio.service.PortfolioService;
 import java.util.Map;
@@ -42,8 +43,11 @@ public class WatchController {
     @GetMapping(value = {"/{id}/add/{tstock_id}"})
     @Transactional
     public Watch add_tstock(@PathVariable("id") Long id, @PathVariable("tstock_id") Long tstock_id) {
-        // block of code
-        return null;
+        Watch watch = get(id);
+        TStock ts = service.gettStockRepository().findOne(tstock_id);
+        watch.addtStock(ts);
+        service.getWatchRepository().save(watch);
+        return get(id);
     }
     
     @DeleteMapping(value = {"/{id}/remove/{tstock_id}"})
