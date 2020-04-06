@@ -50,8 +50,18 @@ public class PriceController {
     // 歷史行情資料走勢
     @GetMapping(value = {"/histquotes/{symbol:.+}"}) // 歷史股價
     public List<HistoricalQuote> queryHistQuotes(@PathVariable("symbol") String symbol) {
-        // Block of code
-        return null;
+        List<HistoricalQuote> histQuotes = null;
+        try {
+            Calendar from = Calendar.getInstance();
+            Calendar to = Calendar.getInstance();
+            from.add(Calendar.YEAR, -1);
+
+            Stock google = YahooFinance.get(symbol);
+            histQuotes = google.getHistory(from, to, Interval.DAILY);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return histQuotes;
     }
 }
 
