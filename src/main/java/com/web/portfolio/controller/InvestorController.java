@@ -52,6 +52,7 @@ public class InvestorController {
         if(investor != null && investor.getWatchs()!= null && investor.getWatchs().size() > 0) {
             investor.getWatchs().size();
         }
+        investor.getPortfolios().size();
         return investor;
     }
     
