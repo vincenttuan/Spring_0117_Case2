@@ -55,6 +55,11 @@ public class App {
         watch.setInvestor(investor1);
         watch.setName("我的觀察股");
         service.getWatchRepository().save(watch);
+        
+        Watch watch2 = new Watch();
+        watch2.setInvestor(investor2);
+        watch2.setName("我的觀察股2");
+        service.getWatchRepository().save(watch2);
     }
     
     

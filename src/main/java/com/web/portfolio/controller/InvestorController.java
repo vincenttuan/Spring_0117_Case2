@@ -1,6 +1,7 @@
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Investor;
+import com.web.portfolio.entity.Watch;
 import com.web.portfolio.service.PortfolioService;
 import java.util.Map;
 import javax.transaction.Transactional;
@@ -36,7 +37,17 @@ public class InvestorController {
         investor.setBalance(Integer.parseInt(map.get("balance")));
         investor.setCode(Integer.toHexString(investor.hashCode()));
         investor.setPass(Boolean.TRUE);
+        
+        
+        // 建立新的 Watch
+        Watch watch = new Watch();
+        watch.setInvestor(investor);
+        watch.setName("我的觀察股");
+        service.getWatchRepository().save(watch);
+        
+        investor.getWatchs().add(watch);
         service.getInvestorRepository().save(investor);
+        
         return investor;
     }
     
