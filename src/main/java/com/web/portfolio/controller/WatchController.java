@@ -53,8 +53,11 @@ public class WatchController {
     @DeleteMapping(value = {"/{id}/remove/{tstock_id}"})
     @Transactional
     public Watch remove_tstock(@PathVariable("id") Long id, @PathVariable("tstock_id") Long tstock_id) {
-        // block of code
-        return null;
+        Watch watch = get(id);
+        TStock ts = service.gettStockRepository().findOne(tstock_id);
+        watch.removetStock(ts);
+        service.getWatchRepository().save(watch);
+        return get(id);
     }
     
 }
