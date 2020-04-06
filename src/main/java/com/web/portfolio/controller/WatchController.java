@@ -36,9 +36,8 @@ public class WatchController {
     @Transactional
     public Boolean update(@PathVariable("id") Long id, @RequestBody Map<String, String> map) {
         Watch watch = get(id);
-        if (watch == null) {
-            return false;
-        }
+        if (watch == null) return false;
+        
         watch.setName(map.get("name"));
         service.getWatchRepository().save(watch);
         return true;
