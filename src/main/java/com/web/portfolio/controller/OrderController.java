@@ -55,7 +55,7 @@ public class OrderController {
         
         return "OK";
     }
-    
+        
     // 賣出
     @GetMapping(value = {"/sell/{id}/{amount}"})
     @Transactional
