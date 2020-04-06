@@ -38,15 +38,13 @@ public class InvestorController {
         investor.setCode(Integer.toHexString(investor.hashCode()));
         investor.setPass(Boolean.TRUE);
         
+        service.getInvestorRepository().save(investor);
         
         // 建立新的 Watch
         Watch watch = new Watch();
         watch.setInvestor(investor);
         watch.setName("我的觀察股");
         service.getWatchRepository().save(watch);
-        
-        investor.getWatchs().add(watch);
-        service.getInvestorRepository().save(investor);
         
         return investor;
     }
